@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>State:</b>
+  <table>
+  <% (0..8).each do |x| %>
+	<tr>
+	<% (0..8).each do |y| %>
+	  <td><%= @game.state.get(x, y) %></td>
+		<% end %>
+	</tr>
+  <% end %>
+  </table>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @game.completed_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

@@ -1,0 +1,32 @@
+<h1>Editing game</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>State:</b>
+<%= form_for(@game) do |f| %>
+<table>
+  <% (0..8).each do |x| %>
+	<tr>
+	  <% (0..8).each do |y| %>
+		<td>
+		  <% val = @game.state.get(x, y) %>
+		  <% if @game.initial_state.get(x, y) == 0 %>
+			<%= text_field_tag "#{x}_#{y}", val == 0 ? ' ': val %>
+		  <% else %>
+			<%= @game.state.get(x, y) %></td>
+		  <% end %>
+	  <% end %>
+	</tr>
+  <% end %>
+</table>
+</p>
+
+<p>
+  <b>Completed at:</b>
+  <%= @game.completed_at %>
+</p>
+  <div class="actions">
+	<%= f.submit %>
+  </div>
+<% end %>
